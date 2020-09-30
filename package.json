@@ -1,0 +1,31 @@
+{
+  "name": "@smakss/password-generator",
+  "version": "1.0.0",
+  "description": "Generate random password.",
+  "type": "module",
+  "main": "./index.cjs",
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMAKSS/password-generator.git"
+  },
+  "keywords": [
+    "npm",
+    "yarn",
+    "Random",
+    "SMAKSS",
+    "CommonJS",
+    "EcmaScript",
+    "Password-Generator",
+    "Random-Password-Generator"
+  ],
+  "author": "SMAKSS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SMAKSS/password-generator/issues"
+  },
+  "homepage": "https://github.com/SMAKSS/password-generator#readme"
+}
