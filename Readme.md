@@ -50,15 +50,15 @@ PasswordGenerator({});
 **Invoking function with optional parameters:**
 
 ```
-PasswordGenerator({ length: 10 })
+PasswordGenerator({ length: 10 });
 
 // Result: ",tWy%[T8fU"
 
-PasswordGenerator({ length: 10, lowerIncluded: false, numIncluded: false })
+PasswordGenerator({ length: 10, lowerIncluded: false, numIncluded: false });
 
 // Result: ":+U,G:JNXL"
 
-PasswordGenerator({ length: 10, characters: ["a", 1, "~"] })
+PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
 
 // Result: "~a~a1~~~a~"
 ```
