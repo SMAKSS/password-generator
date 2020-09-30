@@ -28,7 +28,7 @@ import PasswordGenerator from '@smakss/password-generator';
 
 then to use it within your application you can do it just like below:
 
-The search function will accept 6 input parameter:
+The search function will accept 6 optional input parameter:
 
 - `length` (`Number`): The length of the desired password. If you left it blank it will be a random number between 0 to 20.
 - `lowerIncluded` (`Boolean`, Default: `True`): You can include or exclude lowercase characters, by default, it's `True` which means the lowercase characters are included.
