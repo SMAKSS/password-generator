@@ -30,7 +30,7 @@ then to use it within your application you can do it just like below:
 
 The search function will accept 6 optional input parameter:
 
-- `length` (`Number`): The length of the desired password. If you left it blank it will be a random number between 0 to 20.
+- `length` (`Number`, , Default: `1-20`): The length of the desired password. If you left it blank it will be a random number between 1 to 20.
 - `lowerIncluded` (`Boolean`, Default: `True`): You can include or exclude lowercase characters, by default, it's `True` which means the lowercase characters are included.
 - `capsIncluded` (`Boolean`, Default: `True`): You can include or exclude capital characters, by default, it's `True` which means the capital characters are included.
 - `numIncluded` (`Boolean`, Default: `True`): You can include or exclude numbers, by default, it's `True` which means the numbers are included.
