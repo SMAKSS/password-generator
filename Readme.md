@@ -8,7 +8,7 @@ Secure passwords for users might be a big challenge for us. This package will he
 
 To install it you can simply do the following command:
 
-```
+```bash
 npm i @smakss/password-generator
 or
 yarn add @smakss/password-generator
@@ -16,13 +16,13 @@ yarn add @smakss/password-generator
 
 to include it with common js module you should do this:
 
-```
+```js
 var PasswordGenerator = require('@smakss/password-generator');
 ```
 
 and to include it with ECMAscript module you can simply do this one:
 
-```
+```js
 import PasswordGenerator from '@smakss/password-generator';
 ```
 
