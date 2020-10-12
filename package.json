@@ -1,6 +1,6 @@
 {
   "name": "@smakss/password-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate random password.",
   "type": "module",
   "main": "./index.cjs",
