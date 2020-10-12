@@ -41,7 +41,7 @@ The search function will accept 6 optional input parameter:
 
 **Invoking function with default parameters:**
 
-```
+```js
 PasswordGenerator({});
 
 // Result: "s%gu?TcT]bvc9"
@@ -49,7 +49,7 @@ PasswordGenerator({});
 
 **Invoking function with optional parameters:**
 
-```
+```js
 PasswordGenerator({ length: 10 });
 
 // Result: ",tWy%[T8fU"
