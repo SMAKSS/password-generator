@@ -39,7 +39,7 @@ The search function will accept 6 optional input parameter:
 
 ## Examples of usage
 
-**Invoking function with default parameters:**
+### Invoking function with default parameters
 
 ```js
 PasswordGenerator({});
@@ -47,17 +47,27 @@ PasswordGenerator({});
 // Result: "s%gu?TcT]bvc9"
 ```
 
-**Invoking function with optional parameters:**
+### Invoking function with optional parameters
+
+Generate a password with length of 10 including all sets of characters:
 
 ```js
 PasswordGenerator({ length: 10 });
 
 // Result: ",tWy%[T8fU"
+```
 
+Exclude numbers and lowercase characters:
+
+```js
 PasswordGenerator({ length: 10, lowerIncluded: false, numIncluded: false });
 
 // Result: ":+U,G:JNXL"
+```
 
+Just use `"a"`, `1`, and `"~"` characters to generate a new password:
+
+```js
 PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
 
 // Result: "~a~a1~~~a~"
