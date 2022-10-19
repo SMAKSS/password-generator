@@ -76,3 +76,7 @@ PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
 ## Demo
 
 You can check the [working demo](https://runkit.com/smakss/password-generator) in runkit.
+
+or
+
+[![View @smakss/password-generator](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/smakss-password-generator-o9ev4k?fontsize=14&hidenavigation=1&theme=dark)
