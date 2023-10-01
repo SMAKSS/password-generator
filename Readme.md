@@ -4,6 +4,14 @@
 
 Secure passwords for users might be a big challenge for us. This package will help you to generate secure random password easily. You can choose allowed characters and even defined them by yourself with random or given length. Also, this package uses ES6+ syntax so if you using older standards for writing JS code you may need a transpiler for it.
 
+## Demo
+
+You can check the [working demo](https://runkit.com/smakss/password-generator) in runkit.
+
+or
+
+[![View @smakss/password-generator](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/smakss-password-generator-o9ev4k?fontsize=14&hidenavigation=1&theme=dark)
+
 ## How it works?
 
 To install it you can simply do the following command:
@@ -17,13 +25,13 @@ yarn add @smakss/password-generator
 to include it with common js module you should do this:
 
 ```js
-var PasswordGenerator = require('@smakss/password-generator');
+var PasswordGenerator = require("@smakss/password-generator");
 ```
 
 and to include it with ECMAscript module you can simply do this one:
 
 ```js
-import PasswordGenerator from '@smakss/password-generator';
+import PasswordGenerator from "@smakss/password-generator";
 ```
 
 then to use it within your application you can do it just like below:
@@ -73,10 +81,10 @@ PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
 // Result: "~a~a1~~~a~"
 ```
 
-## Demo
+## Contributing
 
-You can check the [working demo](https://runkit.com/smakss/password-generator) in runkit.
+Interested in making contributions to this project? Please see [CONTRIBUTING.md](https://github.com/SMAKSS/password-generator/blob/master/.github/CONTRIBUTING.md) for guidelines and details.
 
-or
+## Code of Conduct
 
-[![View @smakss/password-generator](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/smakss-password-generator-o9ev4k?fontsize=14&hidenavigation=1&theme=dark)
+We value and prioritize the well-being of all our contributors and users. To ensure that this project remains a welcoming space for everyone, please refer to our [Code of Conduct](https://github.com/SMAKSS/password-generator/blob/master/.github/CODE_OF_CONDUCT.md).
