@@ -25,13 +25,13 @@ yarn add @smakss/password-generator
 to include it with common js module you should do this:
 
 ```js
-var PasswordGenerator = require("@smakss/password-generator");
+var PasswordGenerator = require('@smakss/password-generator');
 ```
 
 and to include it with ECMAscript module you can simply do this one:
 
 ```js
-import PasswordGenerator from "@smakss/password-generator";
+import PasswordGenerator from '@smakss/password-generator';
 ```
 
 then to use it within your application you can do it just like below:
@@ -76,7 +76,7 @@ PasswordGenerator({ length: 10, lowerIncluded: false, numIncluded: false });
 Just use `"a"`, `1`, and `"~"` characters to generate a new password:
 
 ```js
-PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
+PasswordGenerator({ length: 10, characters: ['a', 1, '~'] });
 
 // Result: "~a~a1~~~a~"
 ```

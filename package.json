@@ -5,11 +5,29 @@
   },
   "description": "Generate random password.",
   "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "rollup": "^4.3.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.js"
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
   },
   "files": [
     "dist"
@@ -22,21 +40,28 @@
     "SMAKSS",
     "CommonJS",
     "EcmaScript",
+    "Typescript",
     "Password-Generator",
     "Random-Password-Generator"
   ],
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "name": "@smakss/password-generator",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SMAKSS/password-generator.git"
   },
   "scripts": {
-    "generate": "tsc -p ."
+    "format": "prettier --write \"**/*.+(js|json|yml|yaml|ts|md)\"",
+    "format:check": "prettier -l \"**/*.+(js|json|yml|yaml|ts|md)\"",
+    "generate": "rollup -c",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "setup": "yarn && husky install",
+    "typecheck": "tsc -b ."
   },
   "type": "module",
   "types": "lib",
-  "version": "2.0.0-beta.1"
+  "version": "2.0.0"
 }

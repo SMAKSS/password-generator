@@ -1,37 +1,37 @@
 /** Array of numeric characters */
-const num: string[] = "0123456789".split("");
+const num: string[] = '0123456789'.split('');
 
 /** Array of uppercase alphabetic characters */
-const caps: string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const caps: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 /** Array of lowercase alphabetic characters */
-const lower: string[] = "abcdefghijklmnopqrstuvwxyz".split("");
+const lower: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 /** Array of special characters */
 const spec: string[] = [
-  "@",
-  "%",
-  "+",
-  "\\",
-  "/",
+  '@',
+  '%',
+  '+',
+  '\\',
+  '/',
   "'",
-  "!",
-  "#",
-  "$",
-  "^",
-  "?",
-  ":",
-  ",",
-  ")",
-  "(",
-  "}",
-  "{",
-  "]",
-  "[",
-  "~",
-  "-",
-  "_",
-  ".",
+  '!',
+  '#',
+  '$',
+  '^',
+  '?',
+  ':',
+  ',',
+  ')',
+  '(',
+  '}',
+  '{',
+  ']',
+  '[',
+  '~',
+  '-',
+  '_',
+  '.'
 ];
 
 /**
@@ -84,7 +84,7 @@ function PasswordGenerator({
   capsIncluded = true,
   numIncluded = true,
   specIncluded = true,
-  characters = [],
+  characters = []
 }: PasswordGeneratorOptions = {}): string {
   const allowedCharacters =
     characters.length > 0
@@ -93,13 +93,13 @@ function PasswordGenerator({
           ...(lowerIncluded ? lower : []),
           ...(capsIncluded ? caps : []),
           ...(numIncluded ? num : []),
-          ...(specIncluded ? spec : []),
+          ...(specIncluded ? spec : [])
         ];
 
   const password = Array.from(
     { length },
     () => allowedCharacters[getRandomIndex(allowedCharacters.length)]
-  ).join("");
+  ).join('');
 
   return password;
 }
