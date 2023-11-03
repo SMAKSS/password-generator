@@ -1,6 +1,6 @@
 # Password Generator
 
-![npm](https://img.shields.io/npm/v/@smakss/password-generator) ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/@smakss/password-generator) ![NPM](https://img.shields.io/npm/l/@smakss/password-generator) ![npm](https://img.shields.io/npm/dt/@smakss/password-generator) ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@smakss/password-generator)
+![npm](https://img.shields.io/npm/v/@smakss/password-generator) ![NPM](https://img.shields.io/npm/l/@smakss/password-generator) ![npm](https://img.shields.io/npm/dt/@smakss/password-generator) ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@smakss/password-generator)
 
 Secure passwords for users might be a big challenge for us. This package will help you to generate secure random password easily. You can choose allowed characters and even defined them by yourself with random or given length. Also, this package uses ES6+ syntax so if you using older standards for writing JS code you may need a transpiler for it.
 
@@ -83,8 +83,8 @@ PasswordGenerator({ length: 10, characters: ["a", 1, "~"] });
 
 ## Contributing
 
-Interested in making contributions to this project? Please see [CONTRIBUTING.md](https://github.com/SMAKSS/password-generator/blob/master/.github/CONTRIBUTING.md) for guidelines and details.
+Interested in making contributions to this project? Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines and details.
 
 ## Code of Conduct
 
-We value and prioritize the well-being of all our contributors and users. To ensure that this project remains a welcoming space for everyone, please refer to our [Code of Conduct](https://github.com/SMAKSS/password-generator/blob/master/.github/CODE_OF_CONDUCT.md).
+We value and prioritize the well-being of all our contributors and users. To ensure that this project remains a welcoming space for everyone, please refer to our [Code of Conduct](./CODE_OF_CONDUCT.md).
