@@ -5,7 +5,6 @@ For bug reports, please fill out the information below to help us understand the
 -->
 
 # Brief Description
-
 <!-- A brief description of the issue.-->
 
 ## Environment
@@ -16,7 +15,6 @@ For bug reports, please fill out the information below to help us understand the
 - `npm` (or `yarn`) version:
 
 ## Code Snippet
-
 <!-- Please provide any relevant code snippets or examples here -->
 
 ```javascript
@@ -24,27 +22,21 @@ For bug reports, please fill out the information below to help us understand the
 ```
 
 ## Steps to Reproduce
-
 <!-- What steps did we need to take to encounter the problem? -->
 
 ## Expected Behavior
-
 <!-- What you expected to happen -->
 
 ## Actual Behavior
-
 <!-- What actually happened. Include the full error message/screenshots/anything that might help understanding the issue -->
 
 ## Reproduction Repository
-
 <!--
 If possible, please provide a repository link where the issue can be reproduced. A minimal test case would be greatly appreciated and can significantly speed up the resolution process.
 -->
 
 ## Problem Description
-
 <!-- A clear and concise description of what the problem is. Include any additional context that might help us understand the issue. -->
 
 ## Suggested Solution
-
 <!-- If you have any suggestion on how to fix the issue please provide it here. If not, just leave this section blank. -->

@@ -16,7 +16,6 @@ Resolves #0000 <!-- link to issue or task card if one exists -->
 -->
 
 ## WHAT does this PR introduce or fix?
-
 <!--
   Detailed summary of changes. Indicate if it introduces a new feature, fixes a bug, or makes improvements.
   Before/after code snippets or explanations are recommended for critical changes.
