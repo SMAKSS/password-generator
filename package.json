@@ -3,7 +3,7 @@
   "bugs": {
     "url": "https://github.com/SMAKSS/password-generator/issues"
   },
-  "description": "Generate random password.",
+  "description": "Securely generate random passwords with @smakss/password-generator. Customizable for length, characters, and complexity, it's perfect for both individual and bulk password creation.",
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
@@ -32,6 +32,11 @@
   ],
   "homepage": "https://github.com/SMAKSS/password-generator#readme",
   "keywords": [
+    "password-creation",
+    "secure-passwords",
+    "random-passwords",
+    "custom-passwords",
+    "bulk-password-generator",
     "npm",
     "yarn",
     "Random",
@@ -61,5 +66,5 @@
   },
   "type": "module",
   "types": "lib",
-  "version": "2.0.0"
+  "version": "3.0.0-beta.0"
 }

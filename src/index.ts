@@ -1,38 +1,8 @@
-/** Array of numeric characters */
-const num: string[] = '0123456789'.split('');
-
-/** Array of uppercase alphabetic characters */
-const caps: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
-/** Array of lowercase alphabetic characters */
-const lower: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
-/** Array of special characters */
-const spec: string[] = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
-];
+// Character Sets
+const num = '0123456789'.split('');
+const caps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const lower = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const spec = "@%+\\/'!#$^?:,)(}{][~-_.".split('');
 
 /**
  * Options for the PasswordGenerator function.
@@ -40,11 +10,12 @@ const spec: string[] = [
  */
 interface PasswordGeneratorOptions {
   length?: number;
-  lowerIncluded?: boolean;
-  capsIncluded?: boolean;
-  numIncluded?: boolean;
-  specIncluded?: boolean;
-  characters?: (string | number)[];
+  includeLower?: boolean;
+  includeCaps?: boolean;
+  includeNums?: boolean;
+  includeSpecs?: boolean;
+  characters?: string;
+  numberOfPasswords?: number;
 }
 
 /**
@@ -59,13 +30,7 @@ function getRandomIndex(max: number): number {
 /**
  * Generates a random password based on the provided options.
  * @param options Configuration options for generating the password.
- * @param options.length The length of the password.
- * @param options.lowerIncluded Whether to include lowercase characters.
- * @param options.capsIncluded Whether to include uppercase characters.
- * @param options.numIncluded Whether to include numeric characters.
- * @param options.specIncluded Whether to include special characters.
- * @param options.characters A custom array of characters to be used for generating the password.
- * @returns A string representing the generated password.
+ * @returns A string representing the generated password or an array of passwords if numberOfPasswords is specified.
  *
  * @example
  * // Generates a 12-character password with all options enabled
@@ -73,35 +38,42 @@ function getRandomIndex(max: number): number {
  * console.log(password);
  *
  * @example
- * // Generates a password using a custom set of characters
- * const customChars = 'abcdef'.split('');
- * const password = PasswordGenerator({ characters: customChars });
- * console.log(password);
+ * // Generates 5 passwords using a custom set of characters
+ * const passwordBulk = PasswordGenerator({ characters: 'abcdef', numberOfPasswords: 5 });
+ * console.log(passwordBulk);
  */
 function PasswordGenerator({
   length = Math.ceil(Math.random() * 20),
-  lowerIncluded = true,
-  capsIncluded = true,
-  numIncluded = true,
-  specIncluded = true,
-  characters = []
-}: PasswordGeneratorOptions = {}): string {
+  includeLower = true,
+  includeCaps = true,
+  includeNums = true,
+  includeSpecs = true,
+  characters = '',
+  numberOfPasswords = 1
+}: PasswordGeneratorOptions = {}): string | string[] {
+  const customCharacters = characters?.split('') || [];
+
   const allowedCharacters =
     characters.length > 0
-      ? characters
+      ? customCharacters
       : [
-          ...(lowerIncluded ? lower : []),
-          ...(capsIncluded ? caps : []),
-          ...(numIncluded ? num : []),
-          ...(specIncluded ? spec : [])
+          ...(includeLower ? lower : []),
+          ...(includeCaps ? caps : []),
+          ...(includeNums ? num : []),
+          ...(includeSpecs ? spec : [])
         ];
 
-  const password = Array.from(
-    { length },
-    () => allowedCharacters[getRandomIndex(allowedCharacters.length)]
-  ).join('');
+  const generatePassword = () =>
+    Array.from(
+      { length },
+      () => allowedCharacters[getRandomIndex(allowedCharacters.length)]
+    ).join('');
 
-  return password;
+  if (numberOfPasswords > 1) {
+    return Array.from({ length: numberOfPasswords }, generatePassword);
+  }
+
+  return generatePassword();
 }
 
 export default PasswordGenerator;

@@ -2,17 +2,15 @@
 
 ![npm](https://img.shields.io/npm/v/@smakss/password-generator) ![NPM](https://img.shields.io/npm/l/@smakss/password-generator) ![npm](https://img.shields.io/npm/dt/@smakss/password-generator) ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@smakss/password-generator)
 
-Creating secure passwords for users might be a big challenge for developers. This package will help you generate secure random passwords easily. You can choose from a predefined set of character types or define your own characters with a specified or random length. This package is written using ES6+ syntax, so if you're using older standards of JavaScript, a transpiler like Babel may be required.
+Generating secure and random passwords is a common necessity in today's digital world. The `@smakss/password-generator` package simplifies this task, providing an easy-to-use tool for creating random passwords. Whether you need a single password or a bulk set, this package offers the flexibility to include various character types or use a custom set of characters.
 
 ## Demo
 
-Check out the [working demo](https://runkit.com/smakss/password-generator) on RunKit.
-
-or
+Explore the functionality in a live environment on CodeSandbox:
 
 [![View @smakss/password-generator](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/smakss-password-generator-o9ev4k?fontsize=14&hidenavigation=1&theme=dark)
 
-## How It Works
+## Installation
 
 To install the package, run:
 
@@ -34,18 +32,19 @@ For ECMAScript modules:
 import PasswordGenerator from '@smakss/password-generator';
 ```
 
-To use it within your application:
+## Usage
 
-The `PasswordGenerator` function accepts an options object with the following optional parameters:
+The `PasswordGenerator` function accepts an options object with the following parameters:
 
 - `length` (`number`, Default: random between 1-20): The length of the desired password.
-- `lowerIncluded` (`boolean`, Default: `true`): Include lowercase characters.
-- `capsIncluded` (`boolean`, Default: `true`): Include uppercase characters.
-- `numIncluded` (`boolean`, Default: `true`): Include numeric characters.
-- `specIncluded` (`boolean`, Default: `true`): Include special characters.
-- `characters` (`Array<string | number>`): Specify custom characters for the password.
+- `includeLower` (`boolean`, Default: `true`): Include lowercase characters.
+- `includeCaps` (`boolean`, Default: `true`): Include uppercase characters.
+- `includeNums` (`boolean`, Default: `true`): Include numeric characters.
+- `includeSpecs` (`boolean`, Default: `true`): Include special characters.
+- `characters` (`string`): Specify a custom string of characters for the password.
+- `numberOfPasswords` (`number`): Number of passwords to generate in bulk.
 
-## Examples of Usage
+## Examples
 
 ### Generate a password with default parameters
 
@@ -66,8 +65,8 @@ const password = PasswordGenerator({ length: 10 });
 ```js
 const password = PasswordGenerator({
   length: 10,
-  lowerIncluded: false,
-  numIncluded: false
+  includeLower: false,
+  includeNums: false
 });
 // Result might be something like: ":+U,G:JNXL"
 ```
@@ -75,14 +74,22 @@ const password = PasswordGenerator({
 ### Generate a password using only specified characters
 
 ```js
-const password = PasswordGenerator({ length: 10, characters: ['a', 1, '~'] });
+const password = PasswordGenerator({ length: 10, characters: 'a1~' });
 // Result might be something like: "~a~a1~~~a~"
+```
+
+### Generate a bulk set of passwords
+
+```js
+const passwords = PasswordGenerator({ numberOfPasswords: 5 });
+// Results in an array of 5 random passwords
+console.log(passwords);
 ```
 
 ## Contributing
 
-If you're interested in contributing to this project, please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines and details.
+Contributions to enhance `@smakss/password-generator` are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## Code of Conduct
 
-We value the well-being of all contributors and users. To ensure this project remains welcoming to everyone, please refer to our [Code of Conduct](./CODE_OF_CONDUCT.md).
+Our commitment to providing a welcoming and inclusive environment is outlined in our [Code of Conduct](./CODE_OF_CONDUCT.md).
