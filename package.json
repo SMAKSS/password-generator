@@ -7,25 +7,31 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "eslint": "^8.56.0",
+    "@types/node": "^26.6.6",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "@typescript-eslint/parser": "^8.72.1",
+    "eslint": "^8.57.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
-    "rollup": "^4.9.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
   },
   "engines": {
     "node": ">=20.0.0"
   },
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
   },
   "files": [
     "dist"
@@ -48,24 +54,26 @@
     "Random-Password-Generator"
   ],
   "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
   "name": "@smakss/password-generator",
+  "packageManager": "pnpm@12.17.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SMAKSS/password-generator.git"
   },
   "scripts": {
-    "format": "prettier --write \"**/*.+(js|json|yml|yaml|ts|md)\"",
-    "format:check": "prettier -l \"**/*.+(js|json|yml|yaml|ts|md)\"",
-    "generate": "rollup -c",
+    "format": "prettier --write \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md)\"",
+    "format:check": "prettier -l \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md)\"",
+    "generate": "vite build && pnpm run generate:types",
+    "generate:types": "tsc -p tsconfig.build.json && node create-declaration-entrypoints.js",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "setup": "yarn && husky install",
-    "test": "npm run generate && node --test",
-    "typecheck": "tsc -b ."
+    "setup": "pnpm install && pnpm exec husky install",
+    "test": "pnpm run generate && node --test",
+    "typecheck": "tsc -b . && pnpm run generate:types && tsc -p tsconfig.package-types.json"
   },
   "type": "module",
-  "types": "lib",
+  "types": "./dist/index.d.cts",
   "version": "3.0.1"
 }

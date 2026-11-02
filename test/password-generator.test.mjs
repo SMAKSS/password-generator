@@ -45,7 +45,10 @@ test('uses rejection sampling to choose password characters', (context) => {
 
 test('throws when secure randomness is unavailable', () => {
   withoutCrypto(() => {
-    assert.throws(() => PasswordGenerator(), /Secure randomness is unavailable/);
+    assert.throws(
+      () => PasswordGenerator(),
+      /Secure randomness is unavailable/
+    );
   });
 });
 
