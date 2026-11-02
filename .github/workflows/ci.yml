@@ -35,6 +35,9 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
+    - name: Run Tests
+      run: yarn test
+
     - name: Type check
       run: yarn typecheck
 
