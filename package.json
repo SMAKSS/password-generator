@@ -21,7 +21,7 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "exports": {
     "import": "./dist/esm/index.js",
@@ -62,6 +62,7 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
     "lint:fix": "eslint src/**/*.ts --fix",
     "setup": "yarn && husky install",
+    "test": "npm run generate && node --test",
     "typecheck": "tsc -b ."
   },
   "type": "module",

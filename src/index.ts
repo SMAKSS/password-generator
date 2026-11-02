@@ -19,12 +19,31 @@ interface PasswordGeneratorOptions {
 }
 
 /**
- * Generates a random index within a given range.
- * @param max The upper bound of the random index (exclusive).
- * @returns A random integer between 0 and max.
+ * Generates an unbiased random index with the Web Crypto API.
+ * @param max The exclusive upper bound for the random index.
+ * @returns A secure random integer between 0 and max - 1.
  */
 function getRandomIndex(max: number): number {
-  return Math.floor(Math.random() * max);
+  if (!Number.isSafeInteger(max) || max < 1 || max > 0x1_0000_0000) {
+    throw new RangeError(
+      'max must be a positive safe integer no greater than 2^32.'
+    );
+  }
+
+  const cryptoProvider = globalThis.crypto;
+  if (!cryptoProvider?.getRandomValues) {
+    throw new Error('Secure randomness is unavailable in this environment.');
+  }
+
+  const range = 0x1_0000_0000;
+  const limit = range - (range % max);
+  const randomValue = new Uint32Array(1);
+
+  do {
+    cryptoProvider.getRandomValues(randomValue);
+  } while (randomValue[0] >= limit);
+
+  return randomValue[0] % max;
 }
 
 /**
@@ -43,7 +62,7 @@ function getRandomIndex(max: number): number {
  * console.log(passwordBulk);
  */
 function PasswordGenerator({
-  length = Math.ceil(Math.random() * 20),
+  length = getRandomIndex(20) + 1,
   includeLower = true,
   includeCaps = true,
   includeNums = true,
@@ -51,6 +70,14 @@ function PasswordGenerator({
   characters = '',
   numberOfPasswords = 1
 }: PasswordGeneratorOptions = {}): string | string[] {
+  if (!Number.isSafeInteger(length) || length < 1) {
+    throw new RangeError('length must be a positive safe integer.');
+  }
+
+  if (!Number.isSafeInteger(numberOfPasswords) || numberOfPasswords < 1) {
+    throw new RangeError('numberOfPasswords must be a positive safe integer.');
+  }
+
   const customCharacters = characters?.split('') || [];
 
   const allowedCharacters =
@@ -62,6 +89,10 @@ function PasswordGenerator({
           ...(includeNums ? num : []),
           ...(includeSpecs ? spec : [])
         ];
+
+  if (allowedCharacters.length === 0) {
+    throw new RangeError('At least one character set must be enabled.');
+  }
 
   const generatePassword = () =>
     Array.from(

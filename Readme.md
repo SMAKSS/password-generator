@@ -4,6 +4,10 @@
 
 Generating secure and random passwords is a common necessity in today's digital world. The `@smakss/password-generator` package simplifies this task, providing an easy-to-use tool for creating random passwords. Whether you need a single password or a bulk set, this package offers the flexibility to include various character types or use a custom set of characters.
 
+Passwords and the default length use the Web Crypto API. Generation throws if secure randomness is unavailable rather than falling back to `Math.random()`.
+
+Node.js 20 or later is required. In browsers, the Web Crypto API must be available.
+
 ## Demo
 
 Explore the functionality in a live environment on CodeSandbox:
