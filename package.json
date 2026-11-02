@@ -63,15 +63,20 @@
     "url": "git+https://github.com/SMAKSS/password-generator.git"
   },
   "scripts": {
-    "format": "prettier --write \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md)\"",
-    "format:check": "prettier -l \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md)\"",
+    "build:playground": "pnpm run generate && pnpm --filter password-generator-playground build",
+    "dev:playground": "pnpm run generate && pnpm --filter password-generator-playground dev",
+    "format": "prettier --write \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md|css|html)\"",
+    "format:check": "prettier -l \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md|css|html)\"",
     "generate": "vite build && pnpm run generate:types",
     "generate:types": "tsc -p tsconfig.build.json && node create-declaration-entrypoints.js",
-    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
+    "lint": "pnpm run lint:main && pnpm run lint:playground",
+    "lint:main": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
+    "lint:playground": "pnpm --filter password-generator-playground lint",
     "lint:fix": "eslint src/**/*.ts --fix",
     "setup": "pnpm install && pnpm exec husky install",
     "test": "pnpm run generate && node --test",
-    "typecheck": "tsc -b . && pnpm run generate:types && tsc -p tsconfig.package-types.json"
+    "typecheck": "tsc -b . && pnpm run generate:types && tsc -p tsconfig.package-types.json && pnpm --filter password-generator-playground typecheck",
+    "typecheck:playground": "pnpm run generate:types && pnpm --filter password-generator-playground typecheck"
   },
   "type": "module",
   "types": "./dist/index.d.cts",

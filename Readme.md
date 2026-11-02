@@ -16,18 +16,18 @@ Explore the functionality in a live environment on CodeSandbox:
 
 ## Installation
 
-To install the package, run:
+Install the package using npm or pnpm:
 
 ```bash
-npm i @smakss/password-generator
+npm install @smakss/password-generator
 # or
-yarn add @smakss/password-generator
+pnpm add @smakss/password-generator
 ```
 
 To include it using CommonJS syntax:
 
 ```js
-const PasswordGenerator = require('@smakss/password-generator');
+const { default: PasswordGenerator } = require('@smakss/password-generator');
 ```
 
 For ECMAScript modules:
@@ -97,3 +97,18 @@ Contributions to enhance `@smakss/password-generator` are welcome. See [CONTRIBU
 ## Code of Conduct
 
 Our commitment to providing a welcoming and inclusive environment is outlined in our [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## Local playground
+
+This repository includes a Vite playground linked to the package through the pnpm workspace. Try the current local build without publishing a package version:
+
+```sh
+pnpm install
+pnpm run dev:playground
+```
+
+To build the playground app, run this from the package root:
+
+~~~sh
+pnpm run build:playground
+~~~
