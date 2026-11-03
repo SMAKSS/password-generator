@@ -1,26 +1,40 @@
 {
-  "author": "SMAKSS",
+  "name": "@smakss/password-generator",
+  "version": "3.0.1",
+  "description": "Securely generate random passwords with @smakss/password-generator. Customizable for length, characters, and complexity, it's perfect for both individual and bulk password creation.",
+  "keywords": [
+    "CommonJS",
+    "EcmaScript",
+    "Password-Generator",
+    "Random",
+    "Random-Password-Generator",
+    "SMAKSS",
+    "Typescript",
+    "bulk-password-generator",
+    "custom-passwords",
+    "npm",
+    "password-creation",
+    "random-passwords",
+    "secure-passwords",
+    "yarn"
+  ],
+  "homepage": "https://github.com/SMAKSS/password-generator#readme",
   "bugs": {
     "url": "https://github.com/SMAKSS/password-generator/issues"
   },
-  "description": "Securely generate random passwords with @smakss/password-generator. Customizable for length, characters, and complexity, it's perfect for both individual and bulk password creation.",
-  "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@types/node": "^26.6.6",
-    "@typescript-eslint/eslint-plugin": "^8.72.1",
-    "@typescript-eslint/parser": "^8.72.1",
-    "eslint": "^8.57.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
-    "tslib": "^2.6.2",
-    "typescript": "^5.9.3",
-    "vite": "^8.3.5"
+  "license": "MIT",
+  "author": "SMAKSS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMAKSS/password-generator.git"
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.cts",
   "exports": {
     ".": {
       "import": {
@@ -33,52 +47,36 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/SMAKSS/password-generator#readme",
-  "keywords": [
-    "password-creation",
-    "secure-passwords",
-    "random-passwords",
-    "custom-passwords",
-    "bulk-password-generator",
-    "npm",
-    "yarn",
-    "Random",
-    "SMAKSS",
-    "CommonJS",
-    "EcmaScript",
-    "Typescript",
-    "Password-Generator",
-    "Random-Password-Generator"
-  ],
-  "license": "MIT",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.js",
-  "name": "@smakss/password-generator",
-  "packageManager": "pnpm@12.17.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SMAKSS/password-generator.git"
-  },
   "scripts": {
     "build:playground": "pnpm run generate && pnpm --filter password-generator-playground build",
     "dev:playground": "pnpm run generate && pnpm --filter password-generator-playground dev",
-    "format": "prettier --write \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md|css|html)\"",
-    "format:check": "prettier -l \"**/*.+(js|mjs|json|yml|yaml|ts|mts|cts|md|css|html)\"",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "generate": "vite build && pnpm run generate:types",
     "generate:types": "tsc -p tsconfig.build.json && node create-declaration-entrypoints.js",
     "lint": "pnpm run lint:main && pnpm run lint:playground",
-    "lint:main": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
+    "lint:main": "oxlint --deny-warnings --ignore-pattern 'playground/**' .",
     "lint:playground": "pnpm --filter password-generator-playground lint",
-    "lint:fix": "eslint src/**/*.ts --fix",
+    "lint:fix": "oxlint --fix src",
     "setup": "pnpm install && pnpm exec husky install",
     "test": "pnpm run generate && node --test",
     "typecheck": "tsc -b . && pnpm run generate:types && tsc -p tsconfig.package-types.json && pnpm --filter password-generator-playground typecheck",
     "typecheck:playground": "pnpm run generate:types && pnpm --filter password-generator-playground typecheck"
   },
-  "type": "module",
-  "types": "./dist/index.d.cts",
-  "version": "3.0.1"
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^26.6.6",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@12.17.0"
 }
