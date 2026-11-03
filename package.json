@@ -1,70 +1,88 @@
 {
-  "author": "SMAKSS",
+  "name": "@smakss/password-generator",
+  "version": "3.0.1",
+  "description": "Securely generate random passwords with @smakss/password-generator. Customizable for length, characters, and complexity, it's perfect for both individual and bulk password creation.",
+  "keywords": [
+    "CommonJS",
+    "EcmaScript",
+    "Password-Generator",
+    "Random",
+    "Random-Password-Generator",
+    "SMAKSS",
+    "Typescript",
+    "bulk-password-generator",
+    "custom-passwords",
+    "npm",
+    "password-creation",
+    "random-passwords",
+    "secure-passwords",
+    "yarn"
+  ],
+  "homepage": "https://github.com/SMAKSS/password-generator#readme",
   "bugs": {
     "url": "https://github.com/SMAKSS/password-generator/issues"
   },
-  "description": "Securely generate random passwords with @smakss/password-generator. Customizable for length, characters, and complexity, it's perfect for both individual and bulk password creation.",
-  "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "eslint": "^8.56.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
-    "rollup": "^4.9.1",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/SMAKSS/password-generator#readme",
-  "keywords": [
-    "password-creation",
-    "secure-passwords",
-    "random-passwords",
-    "custom-passwords",
-    "bulk-password-generator",
-    "npm",
-    "yarn",
-    "Random",
-    "SMAKSS",
-    "CommonJS",
-    "EcmaScript",
-    "Typescript",
-    "Password-Generator",
-    "Random-Password-Generator"
-  ],
   "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "name": "@smakss/password-generator",
+  "author": "SMAKSS",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SMAKSS/password-generator.git"
   },
-  "scripts": {
-    "format": "prettier --write \"**/*.+(js|json|yml|yaml|ts|md)\"",
-    "format:check": "prettier -l \"**/*.+(js|json|yml|yaml|ts|md)\"",
-    "generate": "rollup -c",
-    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,ts --max-warnings=0 .",
-    "lint:fix": "eslint src/**/*.ts --fix",
-    "setup": "yarn && husky install",
-    "typecheck": "tsc -b ."
-  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "types": "lib",
-  "version": "3.0.1"
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build:playground": "pnpm run generate && pnpm --filter password-generator-playground build",
+    "dev:playground": "pnpm run generate && pnpm --filter password-generator-playground dev",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "generate": "vite build && pnpm run generate:types",
+    "generate:types": "tsc -p tsconfig.build.json && node create-declaration-entrypoints.js",
+    "lint": "pnpm run lint:main && pnpm run lint:playground",
+    "lint:main": "oxlint --deny-warnings --ignore-pattern 'playground/**' .",
+    "lint:playground": "pnpm --filter password-generator-playground lint",
+    "lint:fix": "oxlint --fix src",
+    "setup": "pnpm install && pnpm exec husky install",
+    "release": "semantic-release",
+    "test": "pnpm run generate && node --test",
+    "typecheck": "tsc -b . && pnpm run generate:types && tsc -p tsconfig.package-types.json && pnpm --filter password-generator-playground typecheck",
+    "typecheck:playground": "pnpm run generate:types && pnpm --filter password-generator-playground typecheck"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^12.0.3",
+    "@semantic-release/npm": "^13.1.3",
+    "@semantic-release/release-notes-generator": "^14.1.0",
+    "@types/node": "^26.6.6",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "semantic-release": "^25.0.3",
+    "tslib": "^2.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@12.17.0"
 }
