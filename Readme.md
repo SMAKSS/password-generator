@@ -1,6 +1,6 @@
 # Password Generator
 
-![npm](https://img.shields.io/npm/v/@smakss/password-generator) ![NPM](https://img.shields.io/npm/l/@smakss/password-generator) ![npm](https://img.shields.io/npm/dt/@smakss/password-generator) ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@smakss/password-generator)
+![npm](https://img.shields.io/npm/v/@smakss/password-generator) ![NPM](https://img.shields.io/npm/l/@smakss/password-generator) ![npm](https://img.shields.io/npm/dt/@smakss/password-generator) ![npm unpacked size](https://img.shields.io/npm/unpacked-size/%40smakss%2Fpassword-generator)
 
 Generating secure and random passwords is a common necessity in today's digital world. The `@smakss/password-generator` package simplifies this task, providing an easy-to-use tool for creating random passwords. Whether you need a single password or a bulk set, this package offers the flexibility to include various character types or use a custom set of characters.
 
